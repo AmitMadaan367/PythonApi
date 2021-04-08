@@ -14,6 +14,7 @@ import pandas as pd
 
 class Current_PairAPIView1(APIView):
     def post(self, request, format=None):
+        data={}
         value = request.headers.get('value',None)
 
         def initial():
@@ -28,8 +29,9 @@ class Current_PairAPIView1(APIView):
             return output
 
         output=driver(value)
+        data.update({"data":output})
 
 
         
-        return Response(output)
+        return Response(data)
         
